@@ -40,10 +40,16 @@ https://api.neso.energy/dataset/88313ae5-94e4-4ddc-a790-593554d8c6b9/resource/f9
 - [x] `LAG()` to detect ramp-up / ramp-down events (delta per 30-min interval)
 - [ ] Cumulative generation share over time
 
-### 6. Outputs
+### 6. Visualisations
+- [ ] Stacked area chart of fuel mix by year
+- [ ] Rolling average comparison (gas vs wind over time)
+- [ ] LAG delta chart showing volatility by fuel type
+- [ ] Carbon intensity trend over time
+
+### 7. Outputs
 - [ ] SQL queries saved as `.sql` files or a Python script using `duckdb` module
 - [ ] Results exported to Parquet or CSV for further use
 
-### 7. Documentation & Version Control
+### 8. Documentation & Version Control
 - [x] Push code (not data) to https://github.com/james-westwood/energy_data_windowing
 - [ ] Write `README.md` explaining the analysis

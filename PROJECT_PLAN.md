@@ -20,24 +20,24 @@ https://api.neso.energy/dataset/88313ae5-94e4-4ddc-a790-593554d8c6b9/resource/f9
 - [x] `uv add duckdb`
 
 ### 2. Data Acquisition
-- [ ] Download `df_fuel_ckan.csv` from NESO
-- [ ] Store locally under `data/raw/`
+- [x] Download `df_fuel_ckan.csv` from NESO
+- [x] Store locally under `data/raw/`
 - [ ] Add `data/` to `.gitignore`
 
 ### 3. Explore the Data
-- [ ] Load CSV into DuckDB
-- [ ] Inspect schema, date range, row count, distinct fuel types
-- [ ] Preview first 20 rows to understand shape
+- [x] Load CSV into DuckDB
+- [x] Inspect schema, date range, row count, distinct fuel types
+- [x] Preview first 20 rows to understand shape
 
 ### 4. Clean & Model
-- [ ] Parse datetime column correctly
-- [ ] Confirm units (MW / GW)
-- [ ] Check for nulls and time series gaps
+- [x] Parse datetime column correctly (DuckDB inferred timestamp automatically)
+- [x] Confirm units (MW — all fuel columns are double except HYDRO/STORAGE which are int64)
+- [x] Check for nulls and time series gaps (data is clean, no issues found)
 
 ### 5. Window Function Analysis
-- [ ] Rolling averages per fuel type (e.g. 24-hour)
-- [ ] Rank fuel types by output per time period
-- [ ] `LAG()` to detect ramp-up / ramp-down events
+- [x] Rolling averages per fuel type (24-hour / 48-row window)
+- [x] Rank fuel types by output per year (UNPIVOT + RANK() + GROUP BY year)
+- [x] `LAG()` to detect ramp-up / ramp-down events (delta per 30-min interval)
 - [ ] Cumulative generation share over time
 
 ### 6. Outputs
@@ -45,5 +45,5 @@ https://api.neso.energy/dataset/88313ae5-94e4-4ddc-a790-593554d8c6b9/resource/f9
 - [ ] Results exported to Parquet or CSV for further use
 
 ### 7. Documentation & Version Control
-- [ ] Push code (not data) to https://codeberg.org/Stoke2748/energy-data-windowing
+- [x] Push code (not data) to https://github.com/james-westwood/energy_data_windowing
 - [ ] Write `README.md` explaining the analysis

@@ -38,7 +38,13 @@ https://api.neso.energy/dataset/88313ae5-94e4-4ddc-a790-593554d8c6b9/resource/f9
 - [x] Rolling averages per fuel type (24-hour / 48-row window)
 - [x] Rank fuel types by output per year (UNPIVOT + RANK() + GROUP BY year)
 - [x] `LAG()` to detect ramp-up / ramp-down events (delta per 30-min interval)
-- [ ] Cumulative generation share over time
+- [x] `LEAD()` to look forward one interval (tomorrow's generation vs today)
+- [x] Cumulative generation share over time (`SUM() OVER (PARTITION BY fuel_type ORDER BY year)`)
+- [ ] Multi-fuel daily delta using UNPIVOT + `LAG() OVER (PARTITION BY fuel_type ORDER BY day)`
+- [ ] Named windows — define a reusable `WINDOW` clause to avoid repeating `OVER (...)` across multiple functions
+- [ ] `RANGE` frames vs `ROWS` frames — value-based vs row-count-based window boundaries
+- [ ] Quantile functions as window aggregates (`quantile_cont`, `quantile_disc`) — e.g. moving median generation per fuel
+- [ ] `MODE()` as a window aggregate — most frequent generation level within a rolling window
 
 ### 6. Visualisations
 - [ ] Stacked area chart of fuel mix by year
@@ -52,4 +58,4 @@ https://api.neso.energy/dataset/88313ae5-94e4-4ddc-a790-593554d8c6b9/resource/f9
 
 ### 8. Documentation & Version Control
 - [x] Push code (not data) to https://github.com/james-westwood/energy_data_windowing
-- [ ] Write `README.md` explaining the analysis
+- [x] Write `README.md` explaining the analysis
